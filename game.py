@@ -11,17 +11,17 @@ screen = pygame.display.set_mode((800,600))
 
 #title and icon
 pygame.display.set_caption("Space Invasion")
-icon = pygame.image.load("ufo.png")
+icon = pygame.image.load("assets/ufo.png")
 pygame.display.set_icon(icon)
-background = pygame.image.load("Background.jpg")
+background = pygame.image.load("assets/Background.jpg")
 
 #add music
-mixer.music.load("background_music.mp3")
+mixer.music.load("assets/background_music.mp3")
 mixer.music.set_volume(0.3)
 mixer.music.play(-1)
 
 #player
-img_player = pygame.image.load("rocket.png")
+img_player = pygame.image.load("assets/rocket.png")
 player_x = 368
 player_y = 500
 player_x_change = 0
@@ -34,14 +34,14 @@ enemy_x_change = []
 enemy_y_change = []
 number_of_enemies = 8
 for e in range(number_of_enemies):
-    img_enemy.append(pygame.image.load("enemy.png"))
+    img_enemy.append(pygame.image.load("assets/enemy.png"))
     enemy_x.append(random.randint(0, 736))
     enemy_y.append(random.randint(50, 200))
     enemy_x_change.append(0.25)
     enemy_y_change.append(20)
 
 #bullet
-img_bullet = pygame.image.load("bullet.png")
+img_bullet = pygame.image.load("assets/bullet.png")
 bullet_x = 0
 bullet_y = 500
 bullet_x_change = 0
@@ -104,7 +104,7 @@ while is_running:
             if event.key == pygame.K_RIGHT:
                 player_x_change = 1
             if event.key == pygame.K_SPACE:
-                bullet_sound = mixer.Sound("shot.mp3")
+                bullet_sound = mixer.Sound("assets/shot.mp3")
                 bullet_sound.play()
                 if not visible_bullet:
                     bullet_x = player_x
@@ -140,7 +140,7 @@ while is_running:
     # collision
     collision = there_is_a_collision(enemy_x[enem], enemy_y[enem], bullet_x, bullet_y)
     if collision:
-        collision_sound = mixer.Sound("punch.mp3")
+        collision_sound = mixer.Sound("assets/punch.mp3")
         collision_sound.play()
         bullet_y = 500
         visible_bullet = False
